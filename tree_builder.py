@@ -7,8 +7,10 @@ class EmployeeNode:
         right (EmployeeNode): The right child node, representing the right subordinate.
     '''
 
-    # Delete this line and implement the class below
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.left = None
+        self.right = None
 
 class TeamTree:
     '''
@@ -18,21 +20,53 @@ class TeamTree:
     Methods:
         insert(manager_name, employee_name, side, current_node=None): Inserts a new employee under the specified manager.
         print_tree(node=None, level=0): Prints the tree structure starting from the given node.
-
     '''
     
-    # Delete this line and implement the class below
-    pass
+    def __init__(self):
+        self.root = None
 
-# Test your code here
+    def insert(self, manager_name, employee_name, side, current_node=None):
+        inserted = False
+        if current_node == None:
+            current_node = self.root
+            if current_node == None:
+                print('Company directory is empty.')
+                return
 
+        if current_node.name == manager_name:
+            if side == 'right' and current_node.right == None:
+                current_node.right = EmployeeNode(employee_name)
+                return
+            elif side == 'left' and current_node.left == None:
+                current_node.left = EmployeeNode(employee_name)
+                return
+            else:
+                print(f'The {side} side is not available for {manager_name}.')
+                return
 
+        if current_node.left:
+            self.insert(manager_name, employee_name, side, current_node.left)
+            return
+        if current_node.right:
+            self.insert(manager_name, employee_name, side, current_node.right)
+            return
+        
+        print('Manager does not exist in directory.')
 
+    def print_tree(self, node=None, level=0):
+        if node == None:
+            if level == 0:
+                node = self.root
+                if node == None:
+                    print('Company directory is empty.')
+                    return
+            else:
+                return
+                
+        print("    " * level + f'- {node.name}')
 
-
-
-
-
+        self.print_tree(node.left, level + 1)
+        self.print_tree(node.right, level + 1)
 
 # CLI functionality
 def company_directory():
@@ -44,7 +78,7 @@ def company_directory():
         print("2. Add Employee")
         print("3. Print Team Structure")
         print("4. Exit")
-        choice = input("Choose an option (1–4): ")
+        choice = input("Choose an option (1-4): ")
 
         if choice == "1":
             if tree.root:
