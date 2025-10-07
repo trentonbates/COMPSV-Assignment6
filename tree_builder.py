@@ -65,8 +65,9 @@ class TeamTree:
                 
         print("    " * level + f'- {node.name}')
 
-        self.print_tree(node.left, level + 1)
-        self.print_tree(node.right, level + 1)
+        if node.left or node.right:
+            self.print_tree(node.left, level + 1)
+            self.print_tree(node.right, level + 1)
 
 # CLI functionality
 def company_directory():
