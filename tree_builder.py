@@ -94,6 +94,7 @@ def company_directory():
             side = input("Should this employee be on the LEFT or RIGHT of the manager? ")
             side = side.lower()
             tree.insert(manager, employee, side)
+            print(f"✅ {employee} added to the {side.upper()} of {manager}")
 
         elif choice == "3":
             print("\n🌳  Current Team Structure:")
@@ -104,3 +105,14 @@ def company_directory():
             break
         else:
             print("❌ Invalid option. Try again.")
+
+company_directory()
+
+'''
+How did the recursive insertion work?
+
+What challenges did you face when finding the right spot for a new employee?
+
+When might trees be preferable to other data structures in real-world systems?
+
+'''
