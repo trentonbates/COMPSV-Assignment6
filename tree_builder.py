@@ -110,10 +110,21 @@ def company_directory():
 company_directory()
 
 '''
-How did the recursive insertion work?
+ - How did the recursive insertion work?
 
-What challenges did you face when finding the right spot for a new employee?
+ The recursive insertion works by searching the tree for the node with the manager name that was given,
+ once it finds the correct node with the matching name, it inserts the new employee as the left or right
+ child, given that it is open. If it does not find the node that matches, after searching the entire
+ tree it will print out a statement saying it could not be found.
 
-When might trees be preferable to other data structures in real-world systems?
+ - What challenges did you face when finding the right spot for a new employee?
+
+ Some challenges that were faced were making sure the manager was in the tree, checking if a matching nodes
+ children nodes were available, handling an empty tree without any root inserted, and managing consistent
+ input on the left and right sides. 
+
+ - When might trees be preferable to other data structures in real-world systems?
+
+ Trees are preferable to other data structures when one is wanting to represent heirarchical data.
 
 '''
